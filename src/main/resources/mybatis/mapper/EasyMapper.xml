@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mbyte.easy.test.mapper.EasyMapper">
+  <resultMap id="BaseResultMap" type="com.mbyte.easy.test.entity.Easy">
+      <id column="id" jdbcType="INTEGER" property="id" />
+      <id column="name" jdbcType="VARCHAR" property="name" />
+      <id column="pwd" jdbcType="VARCHAR" property="pwd" />
+
+  </resultMap>
+  <sql id="Base_Column_List">
+              id,
+      name, pwd
+  </sql>
+
+<!--注意:在打开下面注释的时候，在执行添加和更新操作时，一定要添加事物，否则会造成无法添加和更新-->
+<!--
+ <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from easy
+       where id = #{id,jdbcType=INT}
+  </select>
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from  easy
+       where id = #{id,jdbcType=INT}
+  </delete>
+  <insert id="insert" parameterType="com.mbyte.easy.test.entity.Easy">
+    insert into easy (name, pwd)
+    values (
+         name = #{name,jdbcType=VARCHAR},
+         pwd = #{pwd,jdbcType=VARCHAR}
+    )
+  </insert>
+
+  <insert id="insertSelective" parameterType="com.mbyte.easy.test.entity.Easy">
+    insert into easy
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="name != null">
+        name,
+      </if>
+      <if test="pwd != null">
+        pwd,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+
+      <if test="pwd != null">
+        pwd = #{pwd,jdbcType=VARCHAR},
+      </if>
+
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.mbyte.easy.test.entity.Easy">
+    update easy
+    <set>
+       <if test="name != null">
+         name = #{name,jdbcType=VARCHAR},
+      </if>
+       <if test="pwd != null">
+         pwd = #{pwd,jdbcType=VARCHAR},
+      </if>
+    </set>
+       where id = #{id,jdbcType=INT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.mbyte.easy.test.entity.Easy">
+    update easy
+    set
+        name = #{name,jdbcType=VARCHAR},
+        pwd = #{pwd,jdbcType=VARCHAR},
+
+       where id = #{id,jdbcType=INT}
+  </update>
+-->
+</mapper>
